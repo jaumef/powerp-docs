@@ -13,6 +13,13 @@ facturació. Només es carregaràn a facturació les lectures necessaries.
 El módul de telegestió afegeix opcions a la fitxa de comptadors, inclosa una
 nova pestanya Telegestió si el comptador es marca que es de telegestió.
 
+En aquesta pestanya hi ha una casella de checkbox la qual indica si el comptador
+té actualment alguna excepció.
+
+![](_static/telegestion/grupo_TG_info.png)
+
+![](_static/telegestion/pestanya_telegestion.png)
+
 ## Procediment de càrrega de lectures
 
 La gestió de lectures de consum de comptadors mitjançant telegestió es realitza
@@ -45,17 +52,11 @@ habitualment seguint tres passos:
     reactiva i així no facturar-la. No obstant, si la potència contractada és
     superior a 15 kW, s'insertaran **sempre** les lectures de reactiva.
 
-```
-.. blockdiag::
-
- blockdiag {
-
+blockdiag {
     ftp -> carga -> validación -> lectura
     carga -> "TG Errores de lectura" [label = "errores", textcolor="#FF0000"]
     validación -> "CRM (Telegestión)" [label = "errores", textcolor="#FF0000"]
-
- }
-```
+}
 
 Actualment, GISCE-ERP és capaç de llegir els seguents fitxers XML
 estandaritzats:
@@ -282,9 +283,24 @@ mitjançant el botó comptadors.
 
 ### Registre de lectura
 
-Registre de lectures dels fitxers. Es mostren els fitxers que s'han carregat i
-si la seva càrrega ha estat correcte o no. Els fitxers erronis poden ser
-fitxers en un format no soportat o directoris a l'arrel del nostre FTP.
+En el registre de lectures dels fitxers es mostren els fitxers que s'han intentat
+carregar i ens informa del resultat de la lectura. Si s'ha llegit correctament
+tot el fitxer, si s'ha llegit parcialment amb algun error o si ha sigut totalment
+erroni.
+
+Els fitxers erronis poden ser fitxers en un format no soportat o directoris
+a l'arrel del nostre FTP.
+Els fitxers que tenen l'estat d'error parcial és perquè contenen valors
+incorrectes en un o més camps. En aquest cas s'ignoren els grups
+d'informació amb errors i es llegeix la resta.
+
+![](_static/telegestion/partial_file_readings.png)
+
+Si entrem a veure l'error parcial que resulta de la càrrega del fitxer
+trobarem quin model de informe és el que dòna l'error, a quin o quins comptadors
+passa, el missatge d'error i la línia o línies conflictives del fitxer.
+
+![](_static/telegestion/partial_reading_error_info.png)
 
 ### Registre de lectura > TG reader Errors
 
@@ -308,8 +324,7 @@ les validades de color **negre**
 
 ![](_static/telegestion/CierresTG.png)
 
-|Llista de lectures de Telegestió|
-|:------------------------------:|
+#### Llista de lectures de Telegestió
 
 Des del llistat podem seleccionar un conjunt lectures i validar-les prement el
 botó **Acció**. S'ens obrirà un formulari on podrem escollir validar o
@@ -320,8 +335,7 @@ tancament com a vàlid o el desmarca.
 
 ![](_static/telegestion/ValidarTancamentTG.png)
 
-|Formulari de validació d'un tancament|
-|:-----------------------------------:|
+#### Formulari de validació d'un tancament
 
 Podem veure la informació completa en el detall d'un tancament:
 
@@ -372,8 +386,7 @@ comptador.
 
 ![](_static/telegestion/ImportarLecturesTG.png)
 
-|Formulari per introduïr data de importació de lectura|
-|:---------------------------------------------------:|
+#### Formulari per introduïr data de importació de lectura
 
 ### Validar TG Tancaments
 

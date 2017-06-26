@@ -1,70 +1,79 @@
-#Documentació del mòdul de qualitat
+# Índex
 
-##Qualitat Individual
+1. [Objecte i àmbit d'aplicació](#objecte-i-ambit-daplicacio)
+2. [Normativa](#normativa)
+3. [Termes i definicions](calidad/terminos_y_definicion.md)
+    1. [Definició de zones](calidad/terminos_y_definicion.md#definicio-de-zones)
+    2. [Recollida d'informació](calidad/terminos_y_definicion.md#recollida-dinformacio)
+    3. [Obtenció de la potencia total instal·lada](calidad/terminos_y_definicion.md#obtencio-de-la-potencia-total-instalada)
+    4. [Emmagatzematge de dades](calidad/terminos_y_definicion.md#emmagatzematge-de-dades)
+    5. [Informació associada a una incidència](calidad/terminos_y_definicion.md#informacio-associada-a-una-incidencia)
+    6. [Criteris per la determinació del nombre i duració de les interrupcions](calidad/terminos_y_definicion.md#criteris-per-la-determinacio-del-nombre-i-duracio-de-les-interrupcions)
+    7. [Desagregació de les dades de la interrupció](calidad/terminos_y_definicion.md#desagregacio-de-les-dades-de-la-interrupcio)
+    8. [Informació associada a instal·lacions i clients](calidad/terminos_y_definicion.md#informacio-associada-a-instalacions-i-clients)
+    9. [Metodologia pel càlcul de l'indicador percentil 80 de TIEPI](calidad/terminos_y_definicion.md#metodologia-pel-calcul-de-linicador-percentil-80-de-tiepi)
+    10. [Metodologia per la obtenció d'informació zonal d'interrupcions en BT](calidad/terminos_y_definicion.md#metodologia-per-la-obtencio-dinformacio-zonal-dinterrupcions-en-bt)
+    11. [Avaluació de la qualitat individual](calidad/terminos_y_definicion.md#avaluacio-de-la-qualitat-individual)
+    12. [Documentació Suport](calidad/terminos_y_definicion.md#documentacio-suport)
+        1. [Generació d'avisos d'incidències](calidad/terminos_y_definicion.md#generacio-davisos-dincidencies)
+        2. [Dades introduïdes en el sistema de forma manual](calidad/terminos_y_definicion.md#dades-introduides-en-el-sistema-de-forma-manual)
+        3. [Modificació de dades](calidad/terminos_y_definicion.md#modificacio-de-dades)
+        4. [Classificació de la interrupció com a programada](calidad/terminos_y_definicion.md#classificacio-de-la-interrupcio-com-a-programada)
+        5. [Classificació de la interrupció com originada per tercers](calidad/terminos_y_definicion.md#classificacio-de-la-interrupcio-com-originada-per-tercers)
+        6. [Classificació de la interrupció com originada per forca Major](calidad/terminos_y_definicion.md#classificacio-de-la-interrupcio-com-originada-per-forca-major)
+    13. [Sistemes Informàtics](calidad/terminos_y_definicion.md#sistemes-informatics)
+    14. [Model d'informe](calidad/terminos_y_definicion.md#model-dinforme)
+4. [Marc de referència del model de Qualitat](calidad/marco_ref_modelo.md)
+    1. [Enfocs de qualitat](calidad/marco_ref_modelo.md#enfocs-de-qualitat)
+    2. [Qualitat del producte i cicle de vida](calidad/marco_ref_modelo.md#qualitat-del-producte-i-cicle-de-vida)
+    3. [Elements a ser avaluats](calidad/marco_ref_modelo.md#elements-a-ser-evaluats)
+    4. [Us d’un model de qualitat](calidad/marco_ref_modelo.md#us-dun-model-de-qualitat)
+5. [Model de qualitat per la qualitat interna i externa](calidad/modelo_interna_y_externa.md)
+    1. [Funcionalitat](calidad/modelo_interna_y_externa.md#funcionalitat)
+    2. [Fiabilitat](calidad/modelo_interna_y_externa.md#fiabilitat)
+    3. [Usabilitat](calidad/modelo_interna_y_externa.md#usabilitat)
+    4. [Eficiència](calidad/modelo_interna_y_externa.md#eficiencia)
+    5. [Mantenibilitat](calidad/modelo_interna_y_externa.md#mantenibilitat)
+    6. [Portabilitat](calidad/modelo_interna_y_externa.md#portabilitat)
+6. [Model de qualitat per la qualitat en us](calidad/modelo_en_uso.md)
+7. [Generació d'incidencies](calidad/generacion_incidencias.md)
+8. [Obtenció de resultats](calidad/obtencion_resultados.md)
 
-A l'apartat de l'ERP de **Qualitat** és on trobarem les funcionalitats per generar i consultar la **Qualitat Individual**.
+# Objecte i àmbit d'aplicació
 
-La **Qualitat Individual** segueix els punts 12 i 13 de la ECO 797.
+La "_Orden ECO / 797/2002_" del 22 de març per la que s'aprova el procediment
+de mesura i control de la continuïtat del subministre eléctric. Estableix els
+criteris i la metodologia a seguir per la recollida i tractament de les dades
+de la continuitat del subministre, incloent els necessaris per la elaboració
+dels índexos de qualitat zonal, _TIEPI_, percentil **80** del _TIEPI_ i _NIEPI_.
+De la mateixa manera es defineixen les característiques del sistema de registre
+d'incidéncies, la informació de base necessaria i la recollida i tractament de
+les dades de continuitat necessaries per poder evaluar per cada client si s'han
+incomplert les seves condicions de qualitat individual, i en cas de ser així,
+poder aplicar-li el perceptiu descompte en la facturació.
 
+Aquest procediment defineix les característiques del programa
+[módul "_GISCE-ERP_QS_"](calidad_individual.md), que està integrat en el
+programa de _GIS_ i _Base de Dades_ d'instal·lacions per companyies
+eléctriques "_GISCE-ERP_".
 
-###Generar Qualitat Individual
-Obrirem l'apartat de Qualitat i ens apareixaran cinc carpetes, la de Traçabilitat, Accions, Informes, Conf. Distribuidora i Configuració. Les dues carpetes amb apartats de Qualitat Individual son la de **Accions** i de de **Informes**.
+Aquest manual d'ús està dissenyat perquè un usuari del programa _GISCE-ERP_
+tingui la capacitat de realitzar les tasques d'entrada, consulta, comprobació
+i obtenció de resultats de qualitat de servei zonal i individual amb el módul
+anomenat "_GISCE-ERP_QS_".
 
-Per generar els valors de qualitat anirem a la carpeta d'Accions i ens trobarem amb dos botons, el de **Qualitat > Accions > Qualitat Individual Hores** i el de **Qualitat > Accions > Qualitat Individual Incidències**.
-El de *Hores* ens generarà els valors que conten el temps en segons dels talls per pòlissa, i el de *Incidències* els valors que te en compte el número de talls que ha tingut la pòlissa.
+Aquest procediment s'aplicarà al programa "_GISCE-ERP_QS_", per al càlcul de la
+qualitat zonal i individual definida en la "_ORDEN ECO / 797/2002_", per les
+companyies de distribució eléctrica.
 
-Per generar la llista de la qualitat clicarem sobre el tipus que desitgem, si *hores* o *incidències*, i ens apareixarà una finestra on ens demanarà l'any pel que volem calcular quines pòlisses han sofert incidències, tal i com podem veure a la imatge següent:
+# Normativa
 
-![](_static/calidad/TIEPI_1.png)
+**Real Decret 1955/2000 de 1 de desembre** pel qual es regulen les activitats
+de transport, distribució, comercialització, subministrament i procediments
+d’autorització d’instal·lacions d’energia elèctrica.
 
-A la imatge hem escrit l'any 2013 com a exemple. Cal tenir en compte de que cada cop que es clica el botó s'està generant l'any sencer, o sobreescrivint en el cas que ja existeixi.
-Un cop seleccionat l'any cliquem al botó *Següent* i se'ns mostrarà una nova pestanya amb l'any que hem escollit, clicant sobre l'any podrem veure el llistat de les pòlisses com en la imatge següent:
+**ORDEN ECO /797/2002 de 22 de març** per la que s’aprova el procediment de
+mesura i control de la continuïtat del subministrament elèctric.
 
-![](_static/calidad/TIEPI_2.png)
-
-En cada linia del llistat consta de vuit columnes amb els camps:
-
-- *Pòlissa*: el número de pòlissa
-- *CUPS*: el número de CUPS associat a la pòlissa
-- *Tarifa*: la tarifa contractada,
-- *Zona*: el tipus de zona on esta el CUPS
-- *Limit Temps de la Zona*: el límit de temps en segons màxim permés a la zona en que es troba el CUPS
-- *Tipus de Interrupció*: el tipus de tall que ha tingut la pòlissa,
-- *Temps Total Interrupció*: la quantitat total en segons de la duració del tall
-- *Dret a descompte*: de si la pòlissa te dret a un descompte o no.
-
-El camp de **Dret a descompte** tindrà un tic de correcte si el **Temps Total Interrupció** és major que el temps de **Limit Temps de la Zona**, d'altre forma sortirà el quadre buit si no es compleix la condició anterior.
-
-!!! warning
-	Aquest llistat no té en compte les incidències amb intèrvals inferiors a 3 minuts, ni les incidències que siguin del tipus *Programada*, ni les causes *Transport*, *Tercers* i *Força Major*.
-
-
-A la part dreta tenim un accés directe que, clicant sobre ell, ens mostra una finestra que ens permet filtrar per varis camps els talls de l'any selecionat, com podem veure a la imatge següent:
-
-![](_static/calidad/TIEPI_3.png)
-
-Sota de la llista podem observar que ens apareix el sumatori del camp **Temps Total Interupció** en segons, seleccionant varies línies clicant amb el botó de *Ctrl* el sumatori serà de les línies que haguem escollit.
-
-Per generar la **Qualitat individual Incidències** és el mateix procediment que amb les hores però tenint en compte que ara ens mirarem el número de talls que han tingut. Per tant tindrem el camp **Limit Número de Talls de la Zona**, que ens te en compte el límit permés de talls per la zona de la pòlissa i el **Número Total Interrupcions**, el número de talls que ha tigut la pòlissa durant l'any que hem seleccionat. Per tant el camp **Dret a descompte** tindrà el tic si hi han hagut més interrupcions de les que es permet per zona.
-
-A la següent imatge veiem un exemple de l'any 2013 on ens fixem amb el número de talls:
-
-![](_static/calidad/TIEPI_4.png)
-
-En aquest cas de les incidències també tenim l'accés directe per a poder filtrar i fer el sumatori del número de incidències.
-
-
-###Informe Qualitat Individual
-
-A la carpeta de **Informes** trobem els accesos per veure els informes de les dues qualitats individuals que hem generat.
-
-Ho explicarem amb l'exemple de la **Qualitat individual Incidències**, però el cas de *Hores* serà exactament igual.
-
-Clicant sobre el botó ens apareix una nova pestanya on hi trobem els anys disponibles per l'informe de qualitat individual, com en la imatge següent:
-
-![](_static/calidad/TIEPI_5.png)
-
-Clicant sobre un any s'ens mostra una pestanya on ens apareixen totes les pòlisses afectades en el termini de l'any, tal i com surt en l'apartat anterior de generar la qualitat individual.
-En aquest cas d'exemple s'ens mostra les incidències del 2011.
-
-![](_static/calidad/TIEPI_6.png)
+"Norma **UNE-ISO/IEC 9126-1**, INGENIERIA DEL SOFTWARE, CALIDAD DEL PRODUCTO
+DE SOFTWARE, MODELO DE CALIDAD”.
